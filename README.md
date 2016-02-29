@@ -12,7 +12,7 @@ composer require wedamir/fuzzy:@dev
 
 $fuzzyTermsGenerator = new \Wedamir\Fuzzy();
 
-$fuzzyTerms = $fuzzyTermGenerator('Hello World!');
+$fuzzyTerms = $fuzzyTermGenerator->generateTerms('Hello World!');
 
 print_r($fuzzyTerms);
 

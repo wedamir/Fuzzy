@@ -1,6 +1,6 @@
 <?php
 
-namespace Sarmat;
+namespace Wedamir;
 
 class Fuzzy
 {
@@ -25,12 +25,13 @@ class Fuzzy
     			   $fuzzyDelete[$key] = [];
     			   $fuzzySubstitution[$key] = [];
     			   $fuzzyInsertation[$key] = [];
-    			   for ($i = 0; $i < strlen($term); $i++) {
+    			   for ($i = 0; $i < strlen($term)+1; $i++) {
       			  if ($i < strlen($term)-1 )
       			     array_push($fuzzyTwist[$key],substr($term,0,$i).substr($term, $i+1, 1).substr($term, $i, 1).substr($term, $i+2));
-
-              array_push($fuzzyDelete[$key], substr($term,0,$i)		.substr($term, $i+1));
-    			    array_push($fuzzySubstitution[$key], substr($term,0,$i).'_'.substr($term, $i+1));
+              if ($i < strlen($term)) {
+                array_push($fuzzyDelete[$key], substr($term,0,$i)		.substr($term, $i+1));
+      			    array_push($fuzzySubstitution[$key], substr($term,0,$i).'_'.substr($term, $i+1));
+              }
     			    array_push($fuzzyInsertation[$key], substr($term,0,$i).'_'.substr($term, $i,1).substr($term, $i+1));
       			}
 			}
@@ -51,9 +52,9 @@ class Fuzzy
          $fuzzyTerms = array_merge($fuzzyTerms, $this->concatinate($fuzzyWord, $fuzzyInsertation));
       }
 
-      foreach($arrayMerge as $key => $fraze) {
+      foreach($fuzzyTerms as $key => $fraze) {
 		          if (str_word_count($fraze) < $countWords)
-		              unset($arrayMerge[$key]);
+		              unset($fuzzyTerms[$key]);
       }
 
       return $fuzzyTerms;

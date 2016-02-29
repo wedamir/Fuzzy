@@ -1,0 +1,19 @@
+{
+    "name": "sarmat/fuzzy",
+    "description": "Fuzzy term generator.",
+    "authors": [
+        {
+            "name": "Wedamir Sarmat",
+            "email": "wedomir@gmail.com"
+        }
+    ],
+    "require" : {
+        "php" : "^5.4"
+    },
+    "autoload": {
+      "psr-4": {
+        "Sarmat\\": "src"
+      }
+    }
+
+}

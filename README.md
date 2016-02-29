@@ -11,6 +11,7 @@ composer require wedamir/fuzzy:@dev
 ## Usage
 
 $fuzzyTermsGenerator = new \Wedamir\Fuzzy();
+
 $fuzzyTerms = $fuzzyTermGenerator('Hello World!');
 
 print_r($fuzzyTerms);
